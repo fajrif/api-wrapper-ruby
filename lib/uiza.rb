@@ -25,6 +25,7 @@ require "uiza/api_operation/delete"
 require "uiza/api_operation/remove"
 
 require "uiza/entity"
+require "uiza/analytic"
 require "uiza/storage"
 require "uiza/category"
 require "uiza/live"
@@ -33,11 +34,7 @@ require "uiza/user"
 
 module Uiza
   class << self
-    attr_accessor :app_id, :authorization
-
-    def workspace_api_domain
-      "stag-ap-southeast-1-api.uizadev.io"
-    end
+    attr_accessor :app_id, :authorization, :workspace_api_domain
 
     def api_version
       "v4"

@@ -16,10 +16,21 @@ module Uiza
       search: "https://docs.uiza.io/v4/#search-entity",
       publish: "https://docs.uiza.io/v4/#publish-entity-to-cdn",
       get_status_publish: "https://docs.uiza.io/v4/#get-publish-status",
-      get_aws_upload_key: "https://docs.uiza.io/v4/#get-aws-upload-key"
+      get_aws_upload_key: "https://docs.uiza.io/v4/#get-aws-upload-key",
+      search_advance: "https://uizaio.atlassian.net/wiki/spaces/~13463283/pages/78544942/Search+APIs+Advance+for+Video+Live"
     }.freeze
 
     class << self
+			def search_advance params = {}
+        url = "https://#{Uiza.workspace_api_domain}/api/public/#{Uiza.api_version}/#{OBJECT_API_PATH}/search-advance"
+        method = :get
+        headers = {"Authorization" => Uiza.authorization}
+        description_link = OBJECT_API_DESCRIPTION_LINK[:search_advance]
+
+        uiza_client = UizaClient.new url, method, headers, params, description_link
+        uiza_client.execute_request
+			end
+
       def search keyword
         url = "https://#{Uiza.workspace_api_domain}/api/public/#{Uiza.api_version}/#{OBJECT_API_PATH}/search"
         method = :get

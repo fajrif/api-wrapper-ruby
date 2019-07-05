@@ -3,6 +3,7 @@ module Uiza
     extend Uiza::APIOperation::Create
     extend Uiza::APIOperation::Retrieve
     extend Uiza::APIOperation::Update
+    extend Uiza::APIOperation::List
 
     OBJECT_API_PATH = "live/entity".freeze
     REGION_OBJECT_API_PATH = "live/region".freeze
@@ -16,10 +17,22 @@ module Uiza
       get_view: "https://docs.uiza.io/v4/#retrieve-views",
       delete: "https://docs.uiza.io/v4/#delete-a-record-file",
       convert_to_vod: "https://docs.uiza.io/v4/#convert-into-vod",
-      get_regions: "https://docs.uiza.io/v4/#get_regions"
+      list: "https://docs.uiza.io/v4/#live-streaming",
+      get_regions: "https://docs.uiza.io/v4/#get_regions",
+      search_advance: "https://uizaio.atlassian.net/wiki/spaces/~13463283/pages/78544942/Search+APIs+Advance+for+Video+Live"
     }.freeze
 
     class << self
+			def search_advance params = {}
+        url = "https://#{Uiza.workspace_api_domain}/api/public/#{Uiza.api_version}/#{OBJECT_API_PATH}/search-advance"
+        method = :get
+        headers = {"Authorization" => Uiza.authorization}
+        description_link = OBJECT_API_DESCRIPTION_LINK[:search_advance]
+
+        uiza_client = UizaClient.new url, method, headers, params, description_link
+        uiza_client.execute_request
+			end
+
       def start_feed id
         url = "https://#{Uiza.workspace_api_domain}/api/public/#{Uiza.api_version}/#{OBJECT_API_PATH}/feed"
         method = :post

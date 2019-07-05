@@ -37,15 +37,10 @@ module Uiza
       check_and_raise_error code, message
 
       data = @response["data"]
-      response = JSON.parse(data.to_json, object_class: Uiza::UizaOpenStruct)
+
+      response = JSON.parse(data.to_json)
 
       return response unless response
-
-      if response.is_a?(Array)
-        response.each(&:define_methods)
-      else
-        response.define_methods
-      end
 
       response
     end
