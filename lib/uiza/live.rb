@@ -4,6 +4,7 @@ module Uiza
     extend Uiza::APIOperation::Retrieve
     extend Uiza::APIOperation::Update
     extend Uiza::APIOperation::List
+    extend Uiza::APIOperation::Delete
 
     OBJECT_API_PATH = "live/entity".freeze
     REGION_OBJECT_API_PATH = "live/region".freeze
