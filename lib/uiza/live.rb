@@ -12,11 +12,12 @@ module Uiza
       create: "https://docs.uiza.io/v4/#create-a-live-event",
       retrieve: "https://docs.uiza.io/v4/#retrieve-a-live-event",
       update: "https://docs.uiza.io/v4/#update-a-live-event",
+      delete: "https://docs.uiza.io/v4/#delete-a-live-event",
       start_feed: "https://docs.uiza.io/v4/#start-a-live-feed",
       list_recorded: "https://docs.uiza.io/v4/#list-recorded-files",
       stop_feed: "https://docs.uiza.io/v4/#stop-a-live-feed",
       get_view: "https://docs.uiza.io/v4/#retrieve-views",
-      delete: "https://docs.uiza.io/v4/#delete-a-record-file",
+      delete_vod: "https://docs.uiza.io/v4/#delete-a-record-file",
       convert_to_vod: "https://docs.uiza.io/v4/#convert-into-vod",
       list: "https://docs.uiza.io/v4/#live-streaming",
       get_regions: "https://docs.uiza.io/v4/#get_regions",
@@ -84,7 +85,7 @@ module Uiza
         uiza_client.execute_request
       end
 
-      def delete id
+			def delete_vod id
         url = "https://#{Uiza.workspace_api_domain}/api/public/#{Uiza.api_version}/#{OBJECT_API_PATH}/dvr"
         method = :delete
         headers = {"Authorization" => Uiza.authorization}
