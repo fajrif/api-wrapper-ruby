@@ -38,7 +38,7 @@ module Uiza
 
       data = @response["data"]
 
-      response = JSON.parse(data.to_json)
+			response = data.nil? ? data : JSON.parse(data.to_json)
 
       return response unless response
 
